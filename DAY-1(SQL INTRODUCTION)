@@ -1,0 +1,45 @@
+1/10/2024(TUESDAY)
+
+Learned with the various SQL commands as DDL(DATA DEFINATION LANGUAGE),DML(DATA MANUPULATION LANGUAGE),DCL(DATA CONTROL LANGUAGE),TCL(TRANSACTION CONTROL LANGUAGE),In these how to use create command, select, update,delete and update.
+
+CREATE TABLE student( 
+    stu_id INT, 
+    name VARCHAR(20), 
+    branch VARCHAR(10), 
+    CGPA DECIMAL(3,2) 
+);
+
+INSERT INTO student (stu_id, name, branch, CGPA) VALUES (101, 'Aman', 'CSE', 8.6);
+
+INSERT INTO student (stu_id, name, branch, CGPA) VALUES (102, 'Arun', 'IT', 8.4);
+
+INSERT INTO student (stu_id, name, branch, CGPA) VALUES (103, 'Ram', 'ECE', 7.8);
+
+INSERT INTO student (stu_id, name, branch, CGPA) VALUES (104, 'Arjun', 'CSE', 8.7);
+
+select *from student;
+
+Delete from student where stu_id=103;
+
+Delete from student where stu_id=103;
+
+select *from student;
+
+update student  
+set branch='CSE' 
+where name='Arjun';
+
+select *from student;
+
+update student 
+set branch='ME' 
+where name='Arjun';
+
+select *from student;
+
+drop table student
+
+
+drop table student
+
+
