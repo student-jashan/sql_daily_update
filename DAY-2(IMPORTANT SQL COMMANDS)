@@ -1,0 +1,89 @@
+2/10/2024(WEDNESDAY)
+TOPICS COVERED:
+1) Introduction to database
+2) Types of database
+3) SQL syntex
+4) SQL statements
+5) Most important SQL commands(SELECT,WHERE,IN,ORDER BY,UPDATE,DROP, ALTER,DELETE)
+SELECT NAME,BRANCH FROM student
+NAME	BRANCH
+Aman	CSE
+Arun	IT
+Ram	ECE
+Arjun	CSE
+
+
+SELECT NAME,BRANCH FROM student
+NAME	BRANCH
+Aman	CSE
+Arun	IT
+Ram	ECE
+Arjun	CSE
+
+
+
+SELECT NAME,BRANCH  
+FROM student 
+WHERE BRANCH='CSE'
+NAME	BRANCH
+Aman	CSE
+Arjun	CSE
+
+
+SELECT NAME,BRANCH  
+FROM student 
+WHERE BRANCH IN('CSE','IT','ECE')
+NAME	BRANCH
+Aman	CSE
+Arun	IT
+Ram	ECE
+Arjun	CSE
+
+
+SELECT NAME,BRANCH  
+FROM student 
+WHERE BRANCH IN('CSE','IT')
+NAME	BRANCH
+Aman	CSE
+Arun	IT
+Arjun	CSE
+
+
+SELECT NAME,BRANCH  
+FROM student 
+WHERE BRANCH IN ('CSE','IT','ECE') 
+ORDER BY BRANCH ASC
+NAME	BRANCH
+Aman	CSE
+Arjun	CSE
+Ram	ECE
+Arun	IT
+
+-- alter command for adding the new column
+ALTER table student 
+ADD age INT;
+
+
+
+UPDATE student
+SET age = 20
+WHERE stu_id = 101;
+
+UPDATE student
+SET age = 22
+WHERE stu_id = 102;
+
+UPDATE student
+SET age = 21
+WHERE stu_id = 103;
+
+UPDATE student
+SET age = 23
+WHERE stu_id = 104;
+
+STU_ID	NAME	 BRANCH	   CGPA	  AGE
+101   	Aman	 CSE	     8.6	   20
+102	    Arun	 IT	       8.4	   22
+103	    Ram 	 ECE	     7.8	   21
+104	    Arjun	 CSE	     8.7	   23
+
