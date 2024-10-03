@@ -1,0 +1,116 @@
+3/10/2024(THURSDAY)
+Topics covered:
+1)SQL Datatypes
+2)SQL operators
+
+DATATYPES:Exact Numeric,Approximate Numeric,Date and Time,Character String,Unicode character,Binary, Miscelleneous
+
+Operators:
+1) Arithmatic operators(SUM,SUBTRACT,MULTIPLICATION,DIVISION)
+2) COmparision operators(EQUAL,LESS THAN,GREATER THAN,NOT EQUAl TO)
+3) Logical ooperators(AND,OR.LIKE,NOT)
+
+SELECT SUM(CGPA) AS Total_CGPA 
+FROM student
+TOTAL_CGPA
+33.5
+
+SELECT SUM(CGPA) AS Total_CGPA 
+FROM student 
+WHERE Branch='CSE'
+TOTAL_CGPA
+17.3
+
+SELECT  
+    (SELECT CGPA FROM Student WHERE STU_ID = 101) * 
+    (SELECT CGPA FROM Student WHERE STU_ID = 104) AS CSE_Multiplication 
+FROM student 
+WHERE BRANCH = 'CSE'
+74.82
+
+Statement 18
+SELECT  
+    (SELECT CGPA FROM Student WHERE STU_ID = 101) * 
+    (SELECT CGPA FROM Student WHERE STU_ID = 103) AS CSE_Multiplication 
+FROM student
+CSE_MULTIPLICATION
+67.08
+
+SELECT  
+    SUM(CGPA)/count(*) AS CSE_Average_CGPA 
+FROM student 
+WHERE BRANCH = 'CSE'
+CSE_AVERAGE_CGPA
+8.65
+
+SELECT* FROM  student WHERE cgpa=8.6
+STU_ID	NAME	BRANCH	CGPA
+101	Aman	CSE	8.6
+
+SELECT* FROM  student WHERE BRANCH !='IT'
+STU_ID	NAME	BRANCH	CGPA
+101	Aman	CSE	8.6
+103	Ram	ECE	7.8
+104	Arjun	CSE	8.7
+
+SELECT* FROM  student WHERE BRANCH<>'IT'
+STU_ID	NAME	BRANCH	CGPA
+101	Aman	CSE	8.6
+103	Ram	ECE	7.8
+104	Arjun	CSE	8.7
+
+SELECT* FROM  student WHERE cgpa<8.6
+STU_ID	NAME	BRANCH	CGPA
+102	Arun	IT	8.4
+103	Ram	ECE	7.8
+
+SELECT* FROM  student WHERE cgpa >8.6
+STU_ID	NAME	BRANCH	CGPA
+104	Arjun	CSE	8.7
+
+SELECT* FROM  student WHERE cgpa >=8.6
+STU_ID	NAME	BRANCH	CGPA
+101	Aman	CSE	8.6
+104	Arjun	CSE	8.7
+
+SELECT* FROM  student WHERE Branch='CSE' AND cgpa >=8.5
+STU_ID	NAME	BRANCH	CGPA
+101	Aman	CSE	8.6
+104	Arjun	CSE	8.7
+
+SELECT* FROM  student WHERE Branch='CSE' AND cgpa >=8.7
+STU_ID	NAME	BRANCH	CGPA
+104	Arjun	CSE	8.7
+
+SELECT* FROM  student WHERE Branch='CSE' or cgpa >=8.7
+STU_ID	NAME	BRANCH	CGPA
+101	Aman	CSE	8.6
+104	Arjun	CSE	8.7
+
+SELECT* FROM  student WHERE Branch='CSE' or cgpa >=8.7
+STU_ID	NAME	BRANCH	CGPA
+101	Aman	CSE	8.6
+104	Arjun	CSE	8.7
+
+SELECT* FROM  student WHERE Branch='CSE' or cgpa >=8.7
+STU_ID	NAME	BRANCH	CGPA
+101	Aman	CSE	8.6
+104	Arjun	CSE	8.7
+
+SELECT* FROM  student WHERE Branch='CSE' or cgpa >8.7
+STU_ID	NAME	BRANCH	CGPA
+101	Aman	CSE	8.6
+104	Arjun	CSE	8.7
+
+SELECT* FROM  student WHERE Branch='CSE' or cgpa >8.7
+STU_ID	NAME	BRANCH	CGPA
+101	Aman	CSE	8.6
+104	Arjun	CSE	8.7
+
+SELECT* FROM  student WHERE Branch='CSE' or cgpa >8.7
+STU_ID	NAME	BRANCH	CGPA
+101	Aman	CSE	8.6
+104	Arjun	CSE	8.7
+
+-- SELECT name of the student whose name ends with m using LIKE operator.
+SELECT* FROM  student WHERE name LIKE '%m';
