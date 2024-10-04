@@ -1,0 +1,18 @@
+5/10/20224(FRIDAY)
+Topics: 
+1) SQL expressions and its types(Boolean,Numeric,Date)
+2) SQL commnets(#,-,/* */)
+Boolean expression :
+SELECT *FROM student WHERE name='Ram'
+
+Numeric expression(count,avg,sum):
+SELECT COUNT(*) AS "student" FROM student
+
+Date expression
+SELECT * FROM student WHERE date condition ;
+
+
+
+Comments:
+Like in any other programming language comments are employed to enhance the readability of the code, same as MySQL provides comments to understand the written code in a better way.
+
