@@ -1,0 +1,72 @@
+5/10/2024(SATURDAY)
+
+Topics:1)Installation of mysql 
+2)Create Database
+3)Select Database
+4)Rename Database
+5)Drop Database
+
+CREATE DATABASE:
+Employeedatabase is creatte in which Employee table and Department table is created
+
+Select Database:
+In this we need to show the created tables in the  existing database.
+
+RENAME THE DATABASE
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| employeedatabase   |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+5 rows in set (0.03 sec)
+
+mysql> use employeedatabase;
+Database changed
+mysql> show tables;
++----------------------------+
+| Tables_in_employeedatabase |
++----------------------------+
+| department                 |
+| employee                   |
++----------------------------+
+2 rows in set (0.01 sec)
+
+mysql> alter table employee rename to Employee_data;
+Query OK, 0 rows affected (0.06 sec)
+
+mysql> show tables;
++----------------------------+
+| Tables_in_employeedatabase |
++----------------------------+
+| department                 |
+| employee_data              |
++----------------------------+
+2 rows in set (0.00 sec)
+
+DROP database
+mysql> Drop database employeedatabase;
+mysql> SHOW DATABASES;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+
+
+
+
+
+
+
+
+
+
+
