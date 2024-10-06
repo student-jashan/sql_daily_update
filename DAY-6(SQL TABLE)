@@ -1,0 +1,127 @@
+7/10/2024(SUNDAY)
+
+
+Topics Covered:1)Create tables in mysql
+2)various queries in Alter command 
+3)Constraints
+4)Rename command in mysql
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| bike               |
+| customerdatabase   |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+6 rows in set (0.06 sec)
+
+mysql> use customerdatabase;
+Database changed
+mysql> show tables;
++----------------------------+
+| Tables_in_customerdatabase |
++----------------------------+
+| customer                   |
++----------------------------+
+1 row in set (0.01 sec)
+
+mysql> SELECT*FROM customer;
++------------+---------------+-----------+-------------+------------------------+--------+---------+
+| CustomerID | CustomeName   | ItemName  | City        | Address                | Gender | Country |
++------------+---------------+-----------+-------------+------------------------+--------+---------+
+|          1 | Jainish Patel | Gelato    | Berlin      | Obere Str.56           | NULL   | NULL    |
+|          2 | Reet Maggo    | Cannoli   | Mexico D.F. | Avda. delaConstitution | NULL   | NULL    |
+|          3 | Divyansh Jain | Panettone | Mexico D.F. | Mataderos 2312         | NULL   | NULL    |
+|          4 | Pakhi Garg    | Tiramisu  | Landon      | 120 Hanover Sq.        | NULL   | NULL    |
++------------+---------------+-----------+-------------+------------------------+--------+---------+
+4 rows in set (0.02 sec)
+
+mysql> ALTER TABLE customer DROP Column Country;
+Query OK, 0 rows affected (0.05 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> SELECT*FROM Customer;
++------------+---------------+-----------+-------------+------------------------+--------+
+| CustomerID | CustomeName   | ItemName  | City        | Address                | Gender |
++------------+---------------+-----------+-------------+------------------------+--------+
+|          1 | Jainish Patel | Gelato    | Berlin      | Obere Str.56           | NULL   |
+|          2 | Reet Maggo    | Cannoli   | Mexico D.F. | Avda. delaConstitution | NULL   |
+|          3 | Divyansh Jain | Panettone | Mexico D.F. | Mataderos 2312         | NULL   |
+|          4 | Pakhi Garg    | Tiramisu  | Landon      | 120 Hanover Sq.        | NULL   |
++------------+---------------+-----------+-------------+------------------------+--------+
+4 rows in set (0.00 sec)
+
+mysql> SELECT*FROM customer;
++------------+---------------+-----------+-------------+------------------------+--------+-------+
+| CustomerID | CustomeName   | ItemName  | City        | Address                | Gender | PRICE |
++------------+---------------+-----------+-------------+------------------------+--------+-------+
+|          1 | Jainish Patel | Gelato    | Berlin      | Obere Str.56           | NULL   |  NULL |
+|          2 | Reet Maggo    | Cannoli   | Mexico D.F. | Avda. delaConstitution | NULL   |  NULL |
+|          3 | Divyansh Jain | Panettone | Mexico D.F. | Mataderos 2312         | NULL   |  NULL |
+|          4 | Pakhi Garg    | Tiramisu  | Landon      | 120 Hanover Sq.        | NULL   |  NULL |
++------------+---------------+-----------+-------------+------------------------+--------+-------+
+4 rows in set (0.00 sec)
+
+mysql> ALTER TABLE customer MODIFY column Price INT;
+Query OK, 4 rows affected (0.06 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
+mysql> SELECT*FROM customer;
++------------+---------------+-----------+-------------+------------------------+--------+-------+
+| CustomerID | CustomeName   | ItemName  | City        | Address                | Gender | Price |
++------------+---------------+-----------+-------------+------------------------+--------+-------+
+|          1 | Jainish Patel | Gelato    | Berlin      | Obere Str.56           | NULL   |  NULL |
+|          2 | Reet Maggo    | Cannoli   | Mexico D.F. | Avda. delaConstitution | NULL   |  NULL |
+|          3 | Divyansh Jain | Panettone | Mexico D.F. | Mataderos 2312         | NULL   |  NULL |
+|          4 | Pakhi Garg    | Tiramisu  | Landon      | 120 Hanover Sq.        | NULL   |  NULL |
++------------+---------------+-----------+-------------+------------------------+--------+-------+
+4 rows in set (0.00 sec)
+
+mysql> ALTER TABLE customer  Rename column CustomeName to ConsumerName;
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> SELECT*FROM customer;
++------------+---------------+-----------+-------------+------------------------+--------+-------+
+| CustomerID | ConsumerName  | ItemName  | City        | Address                | Gender | Price |
++------------+---------------+-----------+-------------+------------------------+--------+-------+
+|          1 | Jainish Patel | Gelato    | Berlin      | Obere Str.56           | NULL   |  NULL |
+|          2 | Reet Maggo    | Cannoli   | Mexico D.F. | Avda. delaConstitution | NULL   |  NULL |
+|          3 | Divyansh Jain | Panettone | Mexico D.F. | Mataderos 2312         | NULL   |  NULL |
+|          4 | Pakhi Garg    | Tiramisu  | Landon      | 120 Hanover Sq.        | NULL   |  NULL |
++------------+---------------+-----------+-------------+------------------------+--------+-------+
+4 rows in set (0.00 sec)
+
+mysql> ALTER TABLE customer ADD CONSTRAINT UniqueConstraint UNIQUE(CustomerID);
+Query OK, 0 rows affected (0.04 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> SELECT*FROM customer;
++------------+---------------+-----------+-------------+------------------------+--------+-------+
+| CustomerID | ConsumerName  | ItemName  | City        | Address                | Gender | Price |
++------------+---------------+-----------+-------------+------------------------+--------+-------+
+|          1 | Jainish Patel | Gelato    | Berlin      | Obere Str.56           | NULL   |  NULL |
+|          2 | Reet Maggo    | Cannoli   | Mexico D.F. | Avda. delaConstitution | NULL   |  NULL |
+|          3 | Divyansh Jain | Panettone | Mexico D.F. | Mataderos 2312         | NULL   |  NULL |
+|          4 | Pakhi Garg    | Tiramisu  | Landon      | 120 Hanover Sq.        | NULL   |  NULL |
++------------+---------------+-----------+-------------+------------------------+--------+-------+
+4 rows in set (0.00 sec)
+
+mysql> ALTER TABLE customer DROP Primary Key;
+Query OK, 4 rows affected (0.06 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
+mysql> SELECT*FROM customer;
++------------+---------------+-----------+-------------+------------------------+--------+-------+
+| CustomerID | ConsumerName  | ItemName  | City        | Address                | Gender | Price |
++------------+---------------+-----------+-------------+------------------------+--------+-------+
+|          1 | Jainish Patel | Gelato    | Berlin      | Obere Str.56           | NULL   |  NULL |
+|          2 | Reet Maggo    | Cannoli   | Mexico D.F. | Avda. delaConstitution | NULL   |  NULL |
+|          3 | Divyansh Jain | Panettone | Mexico D.F. | Mataderos 2312         | NULL   |  NULL |
+|          4 | Pakhi Garg    | Tiramisu  | Landon      | 120 Hanover Sq.        | NULL   |  NULL |
++------------+---------------+-----------+-------------+------------------------+--------+-------+
+4 rows in set (0.00 sec)
