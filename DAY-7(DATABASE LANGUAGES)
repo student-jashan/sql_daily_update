@@ -1,0 +1,44 @@
+7/10/2024(MONDAY)
+Topics Covered:
+1)use DESC(DESCRIBE) command
+2)Database and its types->DDL,DCL,DML,TCL
+
+DESCRIBE COMMAND
+
+mysql> use customerdatabase;
+Database changed
+mysql> show tables;
++----------------------------+
+| Tables_in_customerdatabase |
++----------------------------+
+| customer                   |
++----------------------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT*FROM customer;
++------------+---------------+-----------+-------------+------------------------+--------+-------+
+| CustomerID | ConsumerName  | ItemName  | City        | Address                | Gender | Price |
++------------+---------------+-----------+-------------+------------------------+--------+-------+
+|          1 | Jainish Patel | Gelato    | Berlin      | Obere Str.56           | NULL   |  NULL |
+|          2 | Reet Maggo    | Cannoli   | Mexico D.F. | Avda. delaConstitution | NULL   |  NULL |
+|          3 | Divyansh Jain | Panettone | Mexico D.F. | Mataderos 2312         | NULL   |  NULL |
+|          4 | Pakhi Garg    | Tiramisu  | Landon      | 120 Hanover Sq.        | NULL   |  NULL |
++------------+---------------+-----------+-------------+------------------------+--------+-------+
+4 rows in set (0.00 sec)
+
+mysql> DESCRIBE customer;
++--------------+-------------+------+-----+---------+-------+
+| Field        | Type        | Null | Key | Default | Extra |
++--------------+-------------+------+-----+---------+-------+
+| CustomerID   | int         | NO   | PRI | NULL    |       |
+| ConsumerName | varchar(45) | NO   |     | NULL    |       |
+| ItemName     | varchar(45) | NO   |     | NULL    |       |
+| City         | varchar(45) | NO   |     | NULL    |       |
+| Address      | varchar(45) | NO   |     | NULL    |       |
+| Gender       | char(1)     | YES  |     | NULL    |       |
+| Price        | int         | YES  |     | NULL    |       |
++--------------+-------------+------+-----+---------+-------+
+7 rows in set (0.00 sec)
+
+mysql>
+
