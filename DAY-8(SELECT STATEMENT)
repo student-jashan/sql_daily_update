@@ -1,0 +1,153 @@
+8/10/2024(TUESDAY)
+
+Topic:
+1)SELCET statement and various functions or commands like UNIQUE,COUNT,DISTINCT,RANDOM,DATE
+
+mysql> SELECT*FROM student;
++---------+-------+--------+-----+-----------------+
+| stud_id | name  | branch | age | Addmission_date |
++---------+-------+--------+-----+-----------------+
+|     101 | Aryan | CSE    | 20  | 2023-08-01      |
+|     102 | ravi  | MECH   | 21  | 2023-08-05      |
+|     103 | Aman  | IT     | 20  | 2023-08-10      |
+|     104 | Ram   | ECE    | 20  | 2023-08-15      |
++---------+-------+--------+-----+-----------------+
+4 rows in set (0.00 sec)
+4 rows in set (0.00 sec)
+
+mysql> SELECT name FROM student;
++-------+
+| name  |
++-------+
+| Aryan |
+| ravi  |
+| Aman  |
+| Ram   |
++-------+
+4 rows in set (0.00 sec)
+'
+mysql> SELECT stud_id,name FROM student WHERE age=21;
++---------+------+
+| stud_id | name |
++---------+------+
+|     102 | ravi |
++---------+------+
+1 row in set (0.00 sec)
+
+mysql> SELECT*FROM student;
++---------+-------+--------+-----+
+| stud_id | name  | branch | age |
++---------+-------+--------+-----+
+|     101 | Aryan | CSE    | 20  |
+|     102 | ravi  | MECH   | 21  |
+|     103 | Aman  | IT     | 20  |
+|     104 | Ram   | ECE    | 20  |
++---------+-------+--------+-----+
+4 rows in set (0.00 sec)
+
+mysql> SELECT name FROM student;
++-------+
+| name  |
++-------+
+| Aryan |
+| ravi  |
+| Aman  |
+| Ram   |
++-------+
+4 rows in set (0.00 sec)
+'
+mysql> SELECT stud_id,name FROM student WHERE age=21;
++---------+------+
+| stud_id | name |
++---------+------+
+|     102 | ravi |
++---------+------+
+1 row in set (0.00 sec)
+
+
+
+mysql> SELECT*FROM student;
++---------+-------+--------+-----+
+| stud_id | name  | branch | age |
++---------+-------+--------+-----+
+|     101 | Aryan | CSE    | 20  |
+|     102 | ravi  | MECH   | 21  |
+|     103 | Aman  | IT     | 20  |
+|     104 | Ram   | ECE    | 20  |
++---------+-------+--------+-----+
+4 rows in set (0.00 sec)
+
+mysql> SELECT name FROM student;
++-------+
+| name  |
++-------+
+| Aryan |
+| ravi  |
+| Aman  |
+| Ram   |
++-------+
+4 rows in set (0.00 sec)
+
+mysql> SELECT stud_id,name FROM student WHERE age=21;
++---------+------+
+| stud_id | name |
++---------+------+
+|     102 | ravi |
++---------+------+
+
+mysql> SELECT COUNT(age) FROM student;
++------------+
+| COUNT(age) |
++------------+
+|          4 |
++------------+
+1 row in set (0.01 sec)
+
+mysql> SELECT DISTINCT COUNT(age) FROM student;
++------------+
+| COUNT(age) |
++------------+
+|          4 |
++------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT COUNT(*) FROM student;
++----------+
+| COUNT(*) |
++----------+
+|        4 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> SELECT COUNT(name) FROM student WHERE age=20;
++-------------+
+| COUNT(name) |
++-------------+
+|           3 |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT COUNT(name) FROM student WHERE age>20;
++-------------+
+| COUNT(name) |
++-------------+
+|           1 |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT RAND(4);
++---------------------+
+| RAND(4)             |
++---------------------+
+| 0.15595286540310166 |
++---------------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT RAND(10*3/10);
++--------------------+
+| RAND(10*3/10)      |
++--------------------+
+| 0.9057697559760601 |
++--------------------+
+1 row in set (0.01 sec)
+
