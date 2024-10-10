@@ -1,0 +1,135 @@
+10/10/2024(THURSDAY)
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| bike               |
+| customerdatabase   |
+| employeedatabase   |
+| information_schema |
+| mysql              |
+| newdatabase        |
+| performance_schema |
+| sys                |
++--------------------+
+8 rows in set (0.01 sec)
+
+mysql> use newdatabase;
+Database changed
+mysql> show tables;
++-----------------------+
+| Tables_in_newdatabase |
++-----------------------+
+| customer              |
++-----------------------+
+1 row in set (0.01 sec)
+
+mysql> SELECT*FROM customer;
++----+--------+-----+----------+--------+
+| ID | NAME   | AGE | ADDRESS  | SALARY |
++----+--------+-----+----------+--------+
+|  1 | Jiya   |  35 | Delhi    |   2000 |
+|  2 | Manu   |  25 | Kolkata  |   1500 |
+|  3 | Harsh  |  23 | Mumbai   |   2000 |
+|  4 | Vansh  |  25 | MP       |   6500 |
+|  5 | Chahal |  27 | Indore   |   8500 |
+|  6 | Manav  |  22 | Mumbai   |   4500 |
+|  7 | Udha   |  24 | Banglore |  10000 |
++----+--------+-----+----------+--------+
+7 rows in set (0.00 sec)
+
+mysql> SELECT ID,NAME,SALARY FROM customer WHERE SALARY>4500;
++----+--------+--------+
+| ID | NAME   | SALARY |
++----+--------+--------+
+|  4 | Vansh  |   6500 |
+|  5 | Chahal |   8500 |
+|  7 | Udha   |  10000 |
++----+--------+--------+
+3 rows in set (0.00 sec)
+
+mysql> UPDATE customer set SALARY=SALARY+1000 WHERE NAME="Jiya";
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> show tables;
++-----------------------+
+| Tables_in_newdatabase |
++-----------------------+
+| customer              |
++-----------------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT*FROM customer;
++----+--------+-----+----------+--------+
+| ID | NAME   | AGE | ADDRESS  | SALARY |
++----+--------+-----+----------+--------+
+|  1 | Jiya   |  35 | Delhi    |   3000 |
+|  2 | Manu   |  25 | Kolkata  |   1500 |
+|  3 | Harsh  |  23 | Mumbai   |   2000 |
+|  4 | Vansh  |  25 | MP       |   6500 |
+|  5 | Chahal |  27 | Indore   |   8500 |
+|  6 | Manav  |  22 | Mumbai   |   4500 |
+|  7 | Udha   |  24 | Banglore |  10000 |
++----+--------+-----+----------+--------+
+7 rows in set (0.00 sec)
+
+mysql> SELECT*FROM customer WHERE NAME IN('Jiya','Vansh');
++----+-------+-----+---------+--------+
+| ID | NAME  | AGE | ADDRESS | SALARY |
++----+-------+-----+---------+--------+
+|  1 | Jiya  |  35 | Delhi   |   3000 |
+|  4 | Vansh |  25 | MP      |   6500 |
++----+-------+-----+---------+--------+
+2 rows in set (0.00 sec)
+
+mysql> SELECT*FROM customer WHERE AGE NOT IN(23,25,22);
++----+--------+-----+----------+--------+
+| ID | NAME   | AGE | ADDRESS  | SALARY |
++----+--------+-----+----------+--------+
+|  1 | Jiya   |  35 | Delhi    |   3000 |
+|  5 | Chahal |  27 | Indore   |   8500 |
+|  7 | Udha   |  24 | Banglore |  10000 |
++----+--------+-----+----------+--------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT*FROM customer WHERE NAME LIKE 'C__%';
++----+--------+-----+---------+--------+
+| ID | NAME   | AGE | ADDRESS | SALARY |
++----+--------+-----+---------+--------+
+|  5 | Chahal |  27 | Indore  |   8500 |
++----+--------+-----+---------+--------+
+1 row in set (0.00 sec)
+
+mysql> SELECT* FROM customer WHERE( AGE=25 OR SALARY>3000) AND (NAME='Manu' OR NAME='Vansh');
++----+-------+-----+---------+--------+
+| ID | NAME  | AGE | ADDRESS | SALARY |
++----+-------+-----+---------+--------+
+|  2 | Manu  |  25 | Kolkata |   1500 |
+|  4 | Vansh |  25 | MP      |   6500 |
++----+-------+-----+---------+--------+
+2 rows in set (0.00 sec)
+
+mysql> SELECT NAME, SALARY, AGE FROM customer WHERE AGE%2=0 OR SALARY<5000;
++-------+--------+-----+
+| NAME  | SALARY | AGE |
++-------+--------+-----+
+| Jiya  |   3000 |  35 |
+| Manu  |   1500 |  25 |
+| Harsh |   2000 |  23 |
+| Manav |   4500 |  22 |
+| Udha  |  10000 |  24 |
++-------+--------+-----+
+5 rows in set (0.00 sec)
+
+mysql> SELECT NAME,AGE,SALARY FROM customer WHERE AGE!=24 AND SALARY>6000 OR SALARY<4000;
++--------+-----+--------+
+| NAME   | AGE | SALARY |
++--------+-----+--------+
+| Jiya   |  35 |   3000 |
+| Manu   |  25 |   1500 |
+| Harsh  |  23 |   2000 |
+| Vansh  |  25 |   6500 |
+| Chahal |  27 |   8500 |
++--------+-----+--------+
+5 rows in set (0.00 sec)
