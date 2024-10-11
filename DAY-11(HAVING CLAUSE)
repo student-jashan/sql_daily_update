@@ -1,0 +1,56 @@
+11/10/2024(FRIDAY)
+Topic:
+HAVING CLAUSE: The HAVING clause places the condition in the groups defined by the GROUP BY clause using the SELECT statement. It can only be used with the SELECT statements.
+HAVING clause is preferred to use with the GROUP BY clause. Else it will work like a WHERE clause.
+
+
+mysql> SELECT*FROM employee_data;
++------------+--------------+-------------+----------------+-----------+
+| EmployeeID | EmployeeName | EmployeeAge | EmployeeSalary | Dept      |
++------------+--------------+-------------+----------------+-----------+
+|          1 | Varun        |          24 |          20000 | HR        |
+|          2 | Rahul        |          23 |          25000 | IT        |
+|          3 | Sunny        |          28 |          30000 | Marketing |
+|          4 | Amit         |          24 |          25000 | HR        |
+|          5 | Gaurav       |          24 |          40000 | HR        |
+|          6 | Ravi         |          30 |          60000 | Marketing |
+|          7 | Aron         |          28 |          50000 | IT        |
+|          8 | Sunny        |          22 |          10000 | HR        |
++------------+--------------+-------------+----------------+-----------+
+8 rows in set (0.05 sec)
+
+We need to find the count rows in each department and need to print the EmployeeSalary, 
+Dept column as a result.
+mysql> SELECT COUNT(EmployeeSalary),Dept FROM employee_data GROUP BY Dept HAVING COUNT(EmployeeSalary);
++-----------------------+-----------+
+| COUNT(EmployeeSalary) | Dept      |
++-----------------------+-----------+
+|                     4 | HR        |
+|                     2 | IT        |
+|                     2 | Marketing |
++-----------------------+-----------+
+3 rows in set (0.00 sec)
+
+
+We need to find those Dept names whose employee salary is maximum of that dept and also greater than 10000 
+and need to print the EmployeeSalary, Dept column as a result.
+SELECT MAX(EmployeeSalary),Dept FROM employee_data GROUP BY Dept HAVING MAX(EmployeeSalary)>10000;
++---------------------+-----------+
+| MAX(EmployeeSalary) | Dept      |
++---------------------+-----------+
+|               40000 | HR        |
+|               50000 | IT        |
+|               60000 | Marketing |
++---------------------+-----------+
+
+We need to find the sum of salaries of each department and need to print the EmployeeSalary,
+Dept column as a result.
+  SELECT SUM(EmployeeSalary),Dept FROM employee_data GROUP BY Dept HAVING SUM(EmployeeSalary);
++---------------------+-----------+
+| SUM(EmployeeSalary) | Dept      |
++---------------------+-----------+
+|               95000 | HR        |
+|               75000 | IT        |
+|               90000 | Marketing |
++---------------------+-----------+
+
