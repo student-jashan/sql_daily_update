@@ -1,0 +1,145 @@
+12/10/2024(SATURDAY)
+
+Topics:
+1)Wildcard operator
+2)AS Clause
+
+
+mysql> SELECT*FROM employee_data WHERE EmployeeName LIKE 'R%';
++------------+--------------+-------------+----------------+-----------+
+| EmployeeID | EmployeeName | EmployeeAge | EmployeeSalary | Dept      |
++------------+--------------+-------------+----------------+-----------+
+|          2 | Rahul        |          23 |          25000 | IT        |
+|          6 | Ravi         |          30 |          60000 | Marketing |
++------------+--------------+-------------+----------------+-----------+
+2 rows in set (0.00 sec)
+
+mysql> SELECT*FROM employee_data WHERE EmployeeName LIKE '%y';
++------------+--------------+-------------+----------------+-----------+
+| EmployeeID | EmployeeName | EmployeeAge | EmployeeSalary | Dept      |
++------------+--------------+-------------+----------------+-----------+
+|          3 | Sunny        |          28 |          30000 | Marketing |
+|          8 | Sunny        |          22 |          10000 | HR        |
++------------+--------------+-------------+----------------+-----------+
+2 rows in set (0.00 sec)
+
+mysql> SELECT*FROM employee_data WHERE EmployeeName LIKE '%r%';
++------------+--------------+-------------+----------------+-----------+
+| EmployeeID | EmployeeName | EmployeeAge | EmployeeSalary | Dept      |
++------------+--------------+-------------+----------------+-----------+
+|          1 | Varun        |          24 |          20000 | HR        |
+|          2 | Rahul        |          23 |          25000 | IT        |
+|          5 | Gaurav       |          24 |          40000 | HR        |
+|          6 | Ravi         |          30 |          60000 | Marketing |
+|          7 | Aron         |          28 |          50000 | IT        |
++------------+--------------+-------------+----------------+-----------+
+5 rows in set (0.00 sec)
+
+mysql> SELECT*FROM employee_data WHERE EmployeeName LIKE '%ro%';
++------------+--------------+-------------+----------------+------+
+| EmployeeID | EmployeeName | EmployeeAge | EmployeeSalary | Dept |
++------------+--------------+-------------+----------------+------+
+|          7 | Aron         |          28 |          50000 | IT   |
++------------+--------------+-------------+----------------+------+
+1 row in set (0.00 sec)
+
+mysql>  SELECT*FROM employee_data WHERE EmployeeName LIKE '_a%';
++------------+--------------+-------------+----------------+-----------+
+| EmployeeID | EmployeeName | EmployeeAge | EmployeeSalary | Dept      |
++------------+--------------+-------------+----------------+-----------+
+|          1 | Varun        |          24 |          20000 | HR        |
+|          2 | Rahul        |          23 |          25000 | IT        |
+|          5 | Gaurav       |          24 |          40000 | HR        |
+|          6 | Ravi         |          30 |          60000 | Marketing |
++------------+--------------+-------------+----------------+-----------+
+4 rows in set (0.00 sec)
+
+mysql> SELECT*FROM employee_data WHERE EmployeeName LIKE 'R__%';
++------------+--------------+-------------+----------------+-----------+
+| EmployeeID | EmployeeName | EmployeeAge | EmployeeSalary | Dept      |
++------------+--------------+-------------+----------------+-----------+
+|          2 | Rahul        |          23 |          25000 | IT        |
+|          6 | Ravi         |          30 |          60000 | Marketing |
++------------+--------------+-------------+----------------+-----------+
+2 rows in set (0.00 sec)
+
+mysql> SELECT*FROM employee_data WHERE EmployeeName LIKE 'R____%';
++------------+--------------+-------------+----------------+------+
+| EmployeeID | EmployeeName | EmployeeAge | EmployeeSalary | Dept |
++------------+--------------+-------------+----------------+------+
+|          2 | Rahul        |          23 |          25000 | IT   |
++------------+--------------+-------------+----------------+------+
+1 row in set (0.00 sec)
+
+mysql> SELECT*FROM employee_data WHERE EmployeeName LIKE 'G%v';
++------------+--------------+-------------+----------------+------+
+| EmployeeID | EmployeeName | EmployeeAge | EmployeeSalary | Dept |
++------------+--------------+-------------+----------------+------+
+|          5 | Gaurav       |          24 |          40000 | HR   |
++------------+--------------+-------------+----------------+------+
+1 row in set (0.00 sec)
+
+
+AS Clause
+
+1)Write a query to get the employee name under the temporary column name 'Emp_Name' .
+ SELECT EmployeeName AS Emp_Name FROM employee_data;
++----------+
+| Emp_Name |
++----------+
+| Varun    |
+| Rahul    |
+| Sunny    |
+| Amit     |
+| Gaurav   |
+| Ravi     |
+| Aron     |
+| Sunny    |
++----------+
+
+SELECT EmployeeID AS Emp_ID , Dept AS Department FROM employee_data;
++--------+------------+
+| Emp_ID | Department |
++--------+------------+
+|      1 | HR         |
+|      2 | IT         |
+|      3 | Marketing  |
+|      4 | HR         |
+|      5 | HR         |
+|      6 | Marketing  |
+|      7 | IT         |
+|      8 | HR         |
++--------+------------+
+8 rows in set (0.00 sec)
+
+mysql>  SELECT EmployeeID AS 'EmpID', CONCAT (Employee_PhoneNumber, ', ', Employee_HomeTown) AS Employee_Info FROM employee_data;
++-------+---------------------+
+| EmpID | Employee_Info       |
++-------+---------------------+
+|     1 | 921445690, Lakhnow  |
+|     2 | 963456790, Delhi    |
+|     3 | 972345690, Goa      |
+|     4 | 919875690, Mumbai   |
+|     5 | 986345690, Haryana  |
+|     6 | 961345690, Gurugram |
+|     7 | 961347690, Punjab   |
+|     8 | 992645790, UP       |
++-------+---------------------+
+8 rows in set (0.00 sec)
+
+
+Assigning a temporary name to a table
+
+Instead of remembering the table names, we can create an alias of them. We can assign a temporary name to the columns of a table; similarly, we can create an alias of a table.
+
+Let's understand it with the help of an example.
+
+ SELECT e.EmployeeID, e.EmployeeName, e.EmployeeAge,e.Dept,e.Employee_PhoneNumber FROM employee_data AS e WHERE e.EmployeeID=2;
++------------+--------------+-------------+------+----------------------+
+| EmployeeID | EmployeeName | EmployeeAge | Dept | Employee_PhoneNumber |
++------------+--------------+-------------+------+----------------------+
+|          2 | Rahul        |          23 | IT   |            963456790 |
++------------+--------------+-------------+------+----------------------+
+
+
+
