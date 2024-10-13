@@ -1,0 +1,5 @@
+13/11/2024(SUNDAY)
+Topics:
+1) Limit in SQL : In Sql, LIMIT is a clause that lets you constrain the number of rows returned by a SELECT statement. It can be incredibly handy when dealing with large datasets.
+2) Union Clause : The Union clause combines two or more tables without duplicate data in the final table. Union clause can only be applied with the SELECT statement.
+3) NOT IN Operator : The SQL 'NOT IN' operator is used to exclude certain values in a WHERE clause. It can be seen as the opposite of the IN operator, as it selects rows where a certain column's value does not exist in a set of given values.
