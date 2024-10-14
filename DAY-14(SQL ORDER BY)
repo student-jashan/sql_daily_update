@@ -1,0 +1,40 @@
+14/10/2024(MONDAY)
+Topics:
+1)Multiple queries on ORDER BY CLAUSE
+2)Sort the Result in sql
+
+
+mysql> SELECT*FROM Emp_detail ORDER BY EmployeeName DESC;
++------------+--------------+-------------+----------------+--------+
+| EmployeeID | EmployeeName | EmployeeAge | EmployeeSalary | Gender |
++------------+--------------+-------------+----------------+--------+
+|          4 | Vishu        |          25 |          40000 | M      |
+|          5 | Vhavb        |          25 |          23000 | M      |
+|          2 | Manav        |          24 |          56000 | M      |
+|          3 | Hena         |          23 |          49000 | F      |
+|          1 | Divya        |          23 |          45000 | F      |
++------------+--------------+-------------+----------------+--------+
+5 rows in set (0.00 sec)
+
+mysql> SELECT*FROM Emp_detail ORDER BY EmployeeID DESC, EmployeeSalary ASC;
++------------+--------------+-------------+----------------+--------+
+| EmployeeID | EmployeeName | EmployeeAge | EmployeeSalary | Gender |
++------------+--------------+-------------+----------------+--------+
+|          5 | Vhavb        |          25 |          23000 | M      |
+|          4 | Vishu        |          25 |          40000 | M      |
+|          3 | Hena         |          23 |          49000 | F      |
+|          2 | Manav        |          24 |          56000 | M      |
+|          1 | Divya        |          23 |          45000 | F      |
++------------+--------------+-------------+----------------+--------+
+5 rows in set (0.00 sec)
+
+
+mysql> SELECT*FROM Emp_detail WHERE EmployeeID>2 ORDER BY EmployeeAge ASC;
++------------+--------------+-------------+----------------+--------+
+| EmployeeID | EmployeeName | EmployeeAge | EmployeeSalary | Gender |
++------------+--------------+-------------+----------------+--------+
+|          3 | Hena         |          23 |          49000 | F      |
+|          4 | Vishu        |          25 |          40000 | M      |
+|          5 | Vhavb        |          25 |          23000 | M      |
++------------+--------------+-------------+----------------+--------+
+3 rows in set (0.00 sec)
