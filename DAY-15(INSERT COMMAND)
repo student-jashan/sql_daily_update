@@ -1,0 +1,106 @@
+15/10/2024(TUESDAY)
+Topics:
+1)What is INSERT statement
+2)INSERT data using Column name
+3)INSERT data not mention columns
+4)INSERT multiple rows
+5) SHORTER way to INSERT multiple roes
+
+ SELECT*FROM emp_detail;
++------------+--------------+-------------+----------------+--------+
+| EmployeeID | EmployeeName | EmployeeAge | EmployeeSalary | Gender |
++------------+--------------+-------------+----------------+--------+
+|          1 | Divya        |          23 |          45000 | F      |
+|          2 | Manav        |          24 |          56000 | M      |
+|          3 | Hena         |          23 |          49000 | F      |
+|          4 | Vishu        |          25 |          40000 | M      |
+|          5 | Vhavb        |          25 |          23000 | M      |
+|          6 | Krishna      |          22 |          46000 | M      |
++------------+--------------+-------------+----------------+--------+
+6 rows in set (0.00 sec)
+
+ INSERT INTO emp_detail(EmployeeID,EmployeeName,EmployeeAge,EmployeeSalary,Gender)
+    ->  VALUES(7,"Vashnabhi",22,30000,"F");
+Query OK, 1 row affected (0.01 sec)
+
+mysql>  INSERT INTO emp_detail(EmployeeID,EmployeeName,EmployeeAge,EmployeeSalary,Gender)
+    ->  VALUES(8,"Harry",26,46000,"M");
+Query OK, 1 row affected (0.00 sec)
+
+ SELECT*FROM emp_detail;
++------------+--------------+-------------+----------------+--------+
+| EmployeeID | EmployeeName | EmployeeAge | EmployeeSalary | Gender |
++------------+--------------+-------------+----------------+--------+
+|          1 | Divya        |          23 |          45000 | F      |
+|          2 | Manav        |          24 |          56000 | M      |
+|          3 | Hena         |          23 |          49000 | F      |
+|          4 | Vishu        |          25 |          40000 | M      |
+|          5 | Vhavb        |          25 |          23000 | M      |
+|          6 | Krishna      |          22 |          46000 | M      |
+|          7 | Vashnabhi    |          22 |          30000 | F      |
+|          8 | Harry        |          26 |          46000 | M      |
++------------+--------------+-------------+----------------+--------+
+8 rows in set (0.00 sec)
+
+ INSERT INTO emp_detail VALUES(9,"Diya",57000,"F");
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+mysql> INSERT INTO emp_detail VALUES(9,"Diya",26,56000,"F");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> SELECT*FROM emp_detail;
++------------+--------------+-------------+----------------+--------+
+| EmployeeID | EmployeeName | EmployeeAge | EmployeeSalary | Gender |
++------------+--------------+-------------+----------------+--------+
+|          1 | Divya        |          23 |          45000 | F      |
+|          2 | Manav        |          24 |          56000 | M      |
+|          3 | Hena         |          23 |          49000 | F      |
+|          4 | Vishu        |          25 |          40000 | M      |
+|          5 | Vhavb        |          25 |          23000 | M      |
+|          6 | Krishna      |          22 |          46000 | M      |
+|          7 | Vashnabhi    |          22 |          30000 | F      |
+|          8 | Harry        |          26 |          46000 | M      |
+|          9 | Diya         |          26 |          56000 | F      |
++------------+--------------+-------------+----------------+--------+
+
+> INSERT INTO emp_detail(EmployeeID,EmployeeName,EmployeeAge,EmployeeSalary,Gender)
+    -> SELECT 10,"Yash",28,67000,"M"
+    -> UNION ALL
+    -> SELECT 11,"Laksh",24,56000,"M";
+Query OK, 2 rows affected (0.01 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> SELECT*FROM emp_detail;
++------------+--------------+-------------+----------------+--------+
+| EmployeeID | EmployeeName | EmployeeAge | EmployeeSalary | Gender |
++------------+--------------+-------------+----------------+--------+
+|          1 | Divya        |          23 |          45000 | F      |
+|          2 | Manav        |          24 |          56000 | M      |
+|          3 | Hena         |          23 |          49000 | F      |
+|          4 | Vishu        |          25 |          40000 | M      |
+|          5 | Vhavb        |          25 |          23000 | M      |
+|          6 | Krishna      |          22 |          46000 | M      |
+|          7 | Vashnabhi    |          22 |          30000 | F      |
+|          8 | Harry        |          26 |          46000 | M      |
+|          9 | Diya         |          26 |          56000 | F      |
+|         10 | Yash         |          28 |          67000 | M      |
+|         11 | Laksh        |          24 |          56000 | M      |
++------------+--------------+-------------+----------------+--------+
+11 rows in set (0.00 sec)
+mysql> CREATE TABLE info(ID INT, COST INT);
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> INSERT INTO info(ID,COST)
+    -> VALUES(1,'1200'),(2,'2300'),(3,'1400');
+Query OK, 3 rows affected (0.01 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> SELECT*FROM info;
++------+------+
+| ID   | COST |
++------+------+
+|    1 | 1200 |
+|    2 | 2300 |
+|    3 | 1400 |
++------+------+
+3 rows in set (0.00 sec)
+
