@@ -1,0 +1,16 @@
+16/10/2024(WEDNESDaY)
+Topic:
+1) Bulk Insert in sql
+2) Insert into select statement
+
+Syntex:
+BULK INSERT table_name
+FROM path_of_file
+WITH options
+
+Copy only some columns from one table into another table:
+
+INSERT INTO table2 (column1, column2, column3, ...)
+SELECT column1, column2, column3, ...
+FROM table1
+WHERE condition;
