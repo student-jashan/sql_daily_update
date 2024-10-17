@@ -1,0 +1,76 @@
+17/10/2024(THURSDAY)
+Topic:What is Update statement(queries)
+Difference between alter and update
+
+
+Syntex:
+UPDATE table_name  
+SET column_name = expression  
+WHERE conditions 
+
+ UPDATE emp_detail SET EmployeeName='Manaya' WHERE EmployeeID=3;
+Query OK, 1 row affected (0.03 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+mysql> SELECT*FROM emp_detail;
++------------+--------------+-------------+----------------+--------+
+| EmployeeID | EmployeeName | EmployeeAge | EmployeeSalary | Gender |
++------------+--------------+-------------+----------------+--------+
+|          1 | Divya        |          23 |          45000 | F      |
+|          2 | Manav        |          24 |          56000 | M      |
+|          3 | Manaya       |          23 |          49000 | F      |
+|          4 | Vishu        |          25 |          40000 | M      |
+|          5 | Vhavb        |          25 |          23000 | M      |
+|          6 | Krishna      |          22 |          46000 | M      |
+|          7 | Vashnabhi    |          22 |          30000 | F      |
+|          8 | Harry        |          26 |          46000 | M      |
+|          9 | Diya         |          26 |          56000 | F      |
+|         10 | Yash         |          28 |          67000 | M      |
+|         11 | Laksh        |          24 |          56000 | M      |
++------------+--------------+-------------+----------------+--------+
+11 rows in set (0.00 sec)
+
+
+UPDATING MULTIPLE FIELDS
+
+ UPDATE emp_detail SET EmployeeName='Raghav',Gender='M' WHERE EmployeeID=7;
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> SELECT*FROM emp_detail;
++------------+--------------+-------------+----------------+--------+
+| EmployeeID | EmployeeName | EmployeeAge | EmployeeSalary | Gender |
++------------+--------------+-------------+----------------+--------+
+|          1 | Divya        |          23 |          45000 | F      |
+|          2 | Manav        |          24 |          56000 | M      |
+|          3 | Manaya       |          23 |          49000 | F      |
+|          4 | Vishu        |          25 |          40000 | M      |
+|          5 | Vhavb        |          25 |          23000 | M      |
+|          6 | Krishna      |          22 |          46000 | M      |
+|          7 | Raghav       |          22 |          30000 | M      |
+|          8 | Harry        |          26 |          46000 | M      |
+|          9 | Diya         |          26 |          56000 | F      |
+|         10 | Yash         |          28 |          67000 | M      |
+|         11 | Laksh        |          24 |          56000 | M      |
++------------+--------------+-------------+----------------+--------+
+11 rows in set (0.00 sec)
+
+
+Difference between alter  and update
+
+ALTER Command
+This command is a Data Definition Language (DDL).
+SYNTEX:
+Add a column −
+ALTER TABLE table_name ADD column_name datatype;
+
+Drop a Column
+ALTER TABLE table_name DROP COLUMN column_name
+
+
+UPDATE Command
+This command is a Data Manipulation Language (DML).
+Syntax:
+
+UPDATE table_name
+SET column1 = value1, column2 = value2....columnN=valueN
+[ WHERE CONDITION ];
