@@ -1,0 +1,27 @@
+DAY-18(FRIDAY)
+Topics:
+1)What is Delete Statement 
+2) Difference between Delete,Drop,Truncate 
+3)Delete statement with WHERE clause
+4)Delete Duplicate Rows 
+
+syntex:
+DELETE FROM table_name
+[where condition];
+
+delete:used to clear the unwanted or absolute data from database and can be used to delete single row
+drop: used to remove entire structure of the database 
+truncate:used to remove all data from table but preserve the table structure 
+
+DELETE multiple records using where clause as
+DELETE FROM employee 
+WHERE employeeID>2;
+
+Delete Duplicate rows 
+SELECT*FROM employee
+GROUP BY employeeID HAVING COUNT(employeeName)>1; 
+
+How to delete the record
+1)Using distinct keyword
+2)Using Group by and Having clause
+3)Using Inner Join statement 
