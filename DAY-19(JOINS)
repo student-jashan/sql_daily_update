@@ -1,0 +1,143 @@
+19/10/2024(SATURDAY)
+Topics:JOINS IN SQL
+
+> SELECT*FROM data;
++--------+--------+-----------+------------+-----+
+| Rollno | Name   | City      | Phone      | Age |
++--------+--------+-----------+------------+-----+
+|      1 | Sunny  | Delhi     | 8976543452 |  18 |
+|      2 | Harsh  | Surat     | 9876541234 |  20 |
+|      3 | Ronny  | Mumbai    | 9087563241 |  19 |
+|      4 | Pratik | Bihar     | 9234657180 |  21 |
+|      5 | Niraj  | Assam     | 9076453211 |  18 |
+|      6 | Mihir  | Ahmedabad | 9012563487 |  20 |
+|      7 | Dhruv  | Surat     | 9213446708 |  22 |
+|      8 | Kavin  | Kolkata   | 8723415067 |  17 |
++--------+--------+-----------+------------+-----+
+8 rows in set (0.00 sec)
+
+mysql> SELECT*FROM course;
++----------+--------+
+| CourseID | Rollno |
++----------+--------+
+|        1 |      1 |
+|        2 |      2 |
+|        2 |      3 |
+|        3 |      4 |
+|        1 |      5 |
+|        4 |      6 |
+|        5 |      7 |
+|        4 |      8 |
++----------+--------+
+8 rows in set (0.00 sec)
+
+mysql> SELECT Name,Age
+    -> CourseID
+    -> FROM data CROSS JOIN course;
++--------+----------+
+| Name   | CourseID |
++--------+----------+
+| Kavin  |       17 |
+| Dhruv  |       22 |
+| Mihir  |       20 |
+| Niraj  |       18 |
+| Pratik |       21 |
+| Ronny  |       19 |
+| Harsh  |       20 |
+| Sunny  |       18 |
+| Kavin  |       17 |
+| Dhruv  |       22 |
+| Mihir  |       20 |
+| Niraj  |       18 |
+| Pratik |       21 |
+| Ronny  |       19 |
+| Harsh  |       20 |
+| Sunny  |       18 |
+| Kavin  |       17 |
+| Dhruv  |       22 |
+| Mihir  |       20 |
+
+mysql> SELECT*FROM data NATURAL JOIN course;
++--------+--------+-----------+------------+-----+----------+
+| Rollno | Name   | City      | Phone      | Age | CourseID |
++--------+--------+-----------+------------+-----+----------+
+|      1 | Sunny  | Delhi     | 8976543452 |  18 |        1 |
+|      2 | Harsh  | Surat     | 9876541234 |  20 |        2 |
+|      3 | Ronny  | Mumbai    | 9087563241 |  19 |        2 |
+|      4 | Pratik | Bihar     | 9234657180 |  21 |        3 |
+|      5 | Niraj  | Assam     | 9076453211 |  18 |        1 |
+|      6 | Mihir  | Ahmedabad | 9012563487 |  20 |        4 |
+|      7 | Dhruv  | Surat     | 9213446708 |  22 |        5 |
+|      8 | Kavin  | Kolkata   | 8723415067 |  17 |        4 |
++--------+--------+-----------+------------+-----+----------+
+8 rows in set (0.00 sec)
+
+mysql> SELECT data.Name,data.Rollno,course.CourseID
+    -> FROM data
+    -> LEFT JOIN course
+    -> ON course.CourseID=data.Rollno;
++--------+--------+----------+
+| Name   | Rollno | CourseID |
++--------+--------+----------+
+| Sunny  |      1 |        1 |
+| Sunny  |      1 |        1 |
+| Harsh  |      2 |        2 |
+| Harsh  |      2 |        2 |
+| Ronny  |      3 |        3 |
+| Pratik |      4 |        4 |
+| Pratik |      4 |        4 |
+| Niraj  |      5 |        5 |
+| Mihir  |      6 |     NULL |
+| Dhruv  |      7 |     NULL |
+| Kavin  |      8 |     NULL |
++--------+--------+----------+
+11 rows in set (0.00 sec)
+
+mysql> SELECT data.Name,data.Rollno,course.CourseID
+    -> FROM data
+    -> RIGHT JOIN course
+    -> ON course.CourseID=data.Rollno;
++--------+--------+----------+
+| Name   | Rollno | CourseID |
++--------+--------+----------+
+| Sunny  |      1 |        1 |
+| Harsh  |      2 |        2 |
+| Harsh  |      2 |        2 |
+| Ronny  |      3 |        3 |
+| Sunny  |      1 |        1 |
+| Pratik |      4 |        4 |
+| Niraj  |      5 |        5 |
+| Pratik |      4 |        4 |
++--------+--------+----------+
+8 rows in set (0.00 sec)
+
+mysql> SELECT data.Name,data.Rollno,course.CourseID
+    -> FROM data
+    -> LEFT JOIN course
+    -> ON course.CourseID=data.Rollno
+    -> union
+    ->  SELECT data.Name,data.Rollno,course.CourseID
+    ->  FROM data
+    -> RIGHT JOIN course
+    ->  ON course.CourseID=data.Rollno;
++--------+--------+----------+
+| Name   | Rollno | CourseID |
++--------+--------+----------+
+| Sunny  |      1 |        1 |
+| Harsh  |      2 |        2 |
+| Ronny  |      3 |        3 |
+| Pratik |      4 |        4 |
+| Niraj  |      5 |        5 |
+| Mihir  |      6 |     NULL |
+| Dhruv  |      7 |     NULL |
+| Kavin  |      8 |     NULL |
++--------+--------+----------+
+8 rows in set (0.00 sec)
+
+
+
+
+
+
+
+
