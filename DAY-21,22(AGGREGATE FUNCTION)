@@ -130,3 +130,31 @@ mysql> SELECT EmployeeAge FROM EMPLOYEES GROUP BY EmployeeAge HAVING COUNT(*)<2;
 +-------------+
 3 rows in set (0.00 sec)
 
+PRACTICE
+1)Print the title and ratings of the movies released in 2012 whose metacritic rating is more than 60 and Domestic collections exceed 10 Crores
+
+SELECT i.title, i.rating
+FROM IMDB AS i
+JOIN earning AS e
+ON i.movie_id = e.movie_id 
+WHERE i.title LIKE '%2012%' 
+AND e.Domestic > 100000000 
+AND i.MetaCritic > 60;
+
+2)Problem statement
+Insert below student details in students table and print all data of table.
++---------+--------+-------+
+| ID  |  Name       | Gender|
++---------+--------+-------+
+|   3     |  Kim    |   F   |
+|   4     | Molina  |   F   |
+|   5     | Dev     |   M   |
++---------+--------+-------+
+
+INSERT INTO students(ID,Name,Gender) 
+VALUES
+(3,'Kim','F'),
+(4,'Molina','F'),
+(5,'Dev','M');
+SELECT*FROM students;
+
