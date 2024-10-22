@@ -1,0 +1,132 @@
+22/10/2024(TUESDAY)
+Topics:Aggregate function
+Group By
+Having Clause
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| office_detail      |
+| performance_schema |
+| sakila             |
+| students           |
+| sys                |
+| world              |
++--------------------+
+8 rows in set (0.06 sec)
+
+mysql> use office_detail;
+Database changed
+mysql> SHOW tables;
++-------------------------+
+| Tables_in_office_detail |
++-------------------------+
+| department              |
+| employee                |
+| manager                 |
++-------------------------+
+3 rows in set (0.02 sec)
+
+mysql> SELECT*FROM employee;
++--------+----------+--------+---------+------------+
+| emp_id | emp_name | salary | dept_id | manager_id |
++--------+----------+--------+---------+------------+
+|      1 | Rahul    |  15000 |       1 |          1 |
+|      2 | Manoj    |  15000 |       1 |          1 |
+|      3 | James    |  55000 |       2 |          2 |
+|      4 | Michael  |  25000 |       2 |          2 |
+|      5 | Ali      |  20000 |      10 |          3 |
+|      6 | Robin    |  35000 |      10 |          3 |
++--------+----------+--------+---------+------------+
+6 rows in set (0.00 sec)
+
+mysql> SELECT COUNT(*) FROM employee;
++----------+
+| COUNT(*) |
++----------+
+|        6 |
++----------+
+1 row in set (0.04 sec)
+
+mysql> SELECT SUM(salary) AS total_salary FROM employees;
+ERROR 1146 (42S02): Table 'office_detail.employees' doesn't exist
+mysql> SELECT SUM(salary) AS total_salary FROM employee;
++--------------+
+| total_salary |
++--------------+
+|       165000 |
++--------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT AVG(salary) AS avg_salary FROM employee;
++------------+
+| avg_salary |
++------------+
+| 27500.0000 |
++------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT MIN(salary) AS lowest_salary FROM employee;
++---------------+
+| lowest_salary |
++---------------+
+|         15000 |
++---------------+
+1 row in set (0.00 sec)
+
+mysql> SHOW databases;
++--------------------+
+| Database           |
++--------------------+
+| company            |
+| information_schema |
+| mysql              |
+| office_detail      |
+| performance_schema |
+| sakila             |
+| students           |
+| sys                |
+| world              |
++--------------------+
+9 rows in set (0.00 sec)
+
+mysql> use company;
+Database changed
+mysql> SELECT*FROM EMPLOYEES;
++------------+--------------+-------------+----------------+-----------+
+| EmployeeID | EmployeeName | EmployeeAge | EmployeeSalary | Dept      |
++------------+--------------+-------------+----------------+-----------+
+|          1 | Varun        |          24 |          20000 | HR        |
+|          2 | Rahul        |          23 |          25000 | IT        |
+|          3 | Sunny        |          28 |          30000 | Marketing |
+|          4 | Amit         |          24 |          25000 | HR        |
+|          5 | Gaurav       |          24 |          40000 | HR        |
+|          6 | Ravi         |          30 |          60000 | Marketing |
+|          7 | Aron         |          28 |          50000 | IT        |
+|          8 | Sunny        |          22 |          10000 | HR        |
++------------+--------------+-------------+----------------+-----------+
+8 rows in set (0.00 sec)
+
+mysql> SELECT Dept FROM EMPLOYEES GROUP BY Dept HAVING COUNT(*)<40;
++-----------+
+| Dept      |
++-----------+
+| HR        |
+| IT        |
+| Marketing |
++-----------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT EmployeeAge FROM EMPLOYEES GROUP BY EmployeeAge HAVING COUNT(*)<2;
++-------------+
+| EmployeeAge |
++-------------+
+|          23 |
+|          30 |
+|          22 |
++-------------+
+3 rows in set (0.00 sec)
+
