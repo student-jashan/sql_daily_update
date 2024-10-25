@@ -1,0 +1,65 @@
+25/10/24(FRIDAY)
+1)
+Write a SQL query for a report that provides the following 
+information for each person in the Person table, regardless if there is an address for each of those people: FirstName, LastName, City, State
+SELECT FirstName,LastName,City,State
+FROM Person
+LEFT JOIN Address
+ON Person.PersonId=Address.PersonId;
+
+2)Table: Salary
++-------------+----------+
+| Column Name | Type     |
++-------------+----------+
+| id          | int      |
+| name        | varchar  |
+| sex         | ENUM     |
+| salary      | int      |
++-------------+----------+
+id is the primary key for this table.
+The sex column is ENUM value of type ('m', 'f').
+The table contains information about an employee.
+
+update salary
+set sex=case 
+when sex='m' 
+then 'f'
+else 'm'
+end;
+
+3)Write a solution to report the name and bonus amount of each employee with a bonus less than 1000.
+Return the result table in any order.
+
+SELECT Employee.name,Bonus.bonus
+FROM Employee
+LEFT JOIN Bonus
+ON Employee.empId= Bonus.empId
+WHERE bonus<1000 OR Bonus IS NULL;
+
+4)Write a solution to find the number of times each student attended each exam.
+
+SELECT St.student_id,St.student_name,SUB.subject_name,COUNT(E.student_id) attended_exams
+FROM Students St
+CROSS JOIN Subjects SUB
+LEFT JOIN Examinations E
+ON St.student_id = E.student_id
+AND SUB.subject_name = E.subject_name
+GROUP BY St.student_id, St.student_name, SUB.subject_name
+ORDER BY St.student_id, St.student_name, SUB.subject_name;
+
++------------+--------------+--------------+----------------+
+| student_id | student_name | subject_name | attended_exams |
++------------+--------------+--------------+----------------+
+| 1          | Alice        | Math         | 3              |
+| 1          | Alice        | Physics      | 2              |
+| 1          | Alice        | Programming  | 1              |
+| 2          | Bob          | Math         | 1              |
+| 2          | Bob          | Physics      | 0              |
+| 2          | Bob          | Programming  | 1              |
+| 6          | Alex         | Math         | 0              |
+| 6          | Alex         | Physics      | 0              |
+| 6          | Alex         | Programming  | 0              |
+| 13         | John         | Math         | 1              |
+| 13         | John         | Physics      | 1              |
+| 13         | John         | Programming  | 1              |
++------------+--------------+--------------+----------------+
