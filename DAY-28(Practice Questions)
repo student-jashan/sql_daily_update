@@ -1,0 +1,19 @@
+28/10/2024(Monday)
+1)Project Employee1: Crafted an SQL query to calculate the average experience years of all employees for each project, rounded to 2 decimal places. 💡 It was a great exercise in using AVG() and ROUND() functions!
+
+SELECT p.project_id, ROUND(AVG(emp.experience_years),2) AS average_years
+FROM Project p
+LEFT JOIN Employee emp
+ON p.employee_id=emp.employee_id
+GROUP BY p.project_id;
+
+
+
+2)Percentage of Users Attended Contest: Developed a solution to find the percentage of users registered in each contest, rounded to two decimals. 📊 Ensured the result was ordered by percentage in descending order, and in case of a tie, by contest_id in ascending order. It was a fantastic way to deepen my understanding of ORDER BY and calculations in SQL.
+SELECT contest_id, ROUND(count(distinct user_id) * 100 /(SELECT count(user_id) FROM Users) ,2) AS percentage
+FROM  Register
+GROUP BY contest_id 
+ORDER BY percentage DESC,contest_id;
+
+
+
