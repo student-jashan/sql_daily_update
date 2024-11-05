@@ -1,0 +1,36 @@
+2/11/2024(Saturday)
+Problem:
+1)Game Play Analysis IV:Write a solution to report the fraction of players that logged in again on the day after the day they first logged in, rounded to 2 decimal places. In other words, you need to count the number of players that logged in for at least two consecutive days starting from their first login date, then divide that number by the total number of players. 
+
+
+# Write your MySQL query statement below
+
+SELECT 
+    ROUND(COUNT(DISTINCT player_id) / (SELECT COUNT(DISTINCT player_id) FROM Activity), 2) as fraction
+FROM 
+    Activity
+
+WHERE (player_id, DATE_SUB(event_date,INTERVAL 1 DAY))
+
+IN
+(
+SELECT player_id, MIN(event_date) as first_login
+FROM Activity
+GROUP BY player_id 
+);
+
+2)Number of unique subjects taught by Eachh Teacher
+Write a solution to calculate the number of unique subjects each teacher teaches in the university.
+
+SELECT teacher_id,count(distinct(subject_id)) as cnt
+FROM Teacher 
+GROUP BY teacher_id;
+
+
+3)User activity for the past 30 days I
+Write a solution to find the daily active user count for a period of 30 days ending 2019-07-27 inclusively. A user was active on someday if they made at least one activity on that day.
+
+SELECT activity_date as day, COUNT(distinct(user_id)) as active_users
+FROM Activity
+WHERE(activity_date>="2019-06-28" AND activity_date<="2019-07-27")
+GROUP BY activity_date ;
